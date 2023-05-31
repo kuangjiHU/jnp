@@ -26,7 +26,9 @@ public class Write2OutputStream {
 
 
     public static void main(String[] args) throws IOException {
-        OutputStream stream = Files.newOutputStream(new File("test.txt").toPath());
-        Write2OutputStream.generateCharacters(stream);
+        PrintStream out = System.out;
+        Write2OutputStream.generateCharacters(out);
+        out.flush();
+        out.close();
     }
 }
