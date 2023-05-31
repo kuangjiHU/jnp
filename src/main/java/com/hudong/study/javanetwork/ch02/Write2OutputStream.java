@@ -11,16 +11,15 @@ public class Write2OutputStream {
         int numberOfCharacterPerLine = 72;
 
         int start = firstPrintableCharacter;
+        byte[] bytes = new byte[numberOfCharacterPerLine + 2];
         while (true) {
             for (int i = start; i < start + numberOfCharacterPerLine; i++) {
-                out.write(
-                        ((i - firstPrintableCharacter) % numberOfPrintableCharacters)
-                                + firstPrintableCharacter
-                );
-
+                bytes[i - start] = (byte) ((i - firstPrintableCharacter) % numberOfPrintableCharacters
+                        + firstPrintableCharacter);
             }
-            out.write('\r');
-            out.write('\n');
+            bytes[72] = '\r';
+            bytes[73] = '\n';
+            out.write(bytes);
             start = ((start + 1) - firstPrintableCharacter) % numberOfPrintableCharacters + firstPrintableCharacter;
         }
     }
@@ -29,6 +28,5 @@ public class Write2OutputStream {
     public static void main(String[] args) throws IOException {
         OutputStream stream = Files.newOutputStream(new File("test.txt").toPath());
         Write2OutputStream.generateCharacters(stream);
-        stream.close();
     }
 }
