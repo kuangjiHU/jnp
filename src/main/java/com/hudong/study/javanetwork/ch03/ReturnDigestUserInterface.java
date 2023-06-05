@@ -27,9 +27,11 @@ public class ReturnDigestUserInterface {
             StringBuilder result = new StringBuilder(args[i]);
             result.append(": ");
             result.append(DatatypeConverter.printHexBinary(digests[i].getDigest()));
+            // 然而得到的结果仍然可能是异常的，
+            // 取决于：程序生成了多少的线程，系统的CPU和磁盘的速度，
+            // 系统使用了多少个CPU,以及JAVA虚拟机为不同线程分配的事件所用的算法。
+            // 这些因素称为竞态条件。
             System.out.println(result);
-
-
         }
     }
 }
