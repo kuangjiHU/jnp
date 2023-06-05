@@ -26,10 +26,11 @@ public class DigestThread extends Thread {
             }
             din.close();
             byte[] digest = sha.digest();
-            StringBuilder result = new StringBuilder(filename);
-            result.append(": ");
-            result.append(DatatypeConverter.printHexBinary(digest));
-            System.out.println(result);
+
+            System.out.print(filename);
+            System.out.print(": ");
+            System.out.print(DatatypeConverter.printHexBinary(digest));
+            System.out.println();
         } catch (FileNotFoundException e) {
             System.err.println(e);
         } catch (NoSuchAlgorithmException e) {
