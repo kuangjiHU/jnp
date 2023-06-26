@@ -13,7 +13,7 @@ public class DaytimeClient {
 
 
     public static void main(String[] args) {
-        String hostname = "time.nist.gov";
+        String hostname = "localhost";
         try (Socket socket = new Socket(hostname, 37)) {
             socket.setSoTimeout(15000);
             InputStream in = socket.getInputStream();
@@ -23,6 +23,7 @@ public class DaytimeClient {
                 System.out.println(c);
                 time.append(c);
             }
+            System.out.println(time);
         } catch (IOException e) {
             System.err.println(e);
         }

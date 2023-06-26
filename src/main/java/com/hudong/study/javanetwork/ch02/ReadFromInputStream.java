@@ -23,7 +23,7 @@ public class ReadFromInputStream {
     }
 
     public static void read(){
-        try (InputStream in = new FileInputStream("test.txt")) {
+        try (InputStream in = new FileInputStream("SingleFileHTTPServerTest.txt.txt")) {
             byte[] input = new byte[10];
             int total = in.read(input);
             log.info("text:{}", new String(input));
@@ -34,7 +34,7 @@ public class ReadFromInputStream {
             throw new RuntimeException(e);
         }
 
-        try (InputStream in = new FileInputStream("test.txt")) {
+        try (InputStream in = new FileInputStream("SingleFileHTTPServerTest.txt.txt")) {
             byte[] input = new byte[10];
             for (int i = 0; i < input.length; i++) {
                 int b = in.read();

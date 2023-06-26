@@ -6,8 +6,8 @@ public class FilterStreamChain {
 
     public static void main(String[] args) {
         byte[] input = new byte[1024];
-        try (InputStream in = new BufferedInputStream(new FileInputStream("test.txt"));
-             DataOutputStream dout = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("test.txt")))) {
+        try (InputStream in = new BufferedInputStream(new FileInputStream("SingleFileHTTPServerTest.txt.txt"));
+             DataOutputStream dout = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("SingleFileHTTPServerTest.txt.txt")))) {
             // 过滤器流不要对同源流进行操作，选择一个
             in.read(input);
             dout.write(input);

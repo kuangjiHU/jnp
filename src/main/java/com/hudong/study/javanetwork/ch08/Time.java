@@ -15,7 +15,7 @@ import java.util.TimeZone;
 public class Time {
 
 
-    private static final String HOSTNAME = "time.nist.gov";
+    private static final String HOSTNAME = "localhost";
 
     public static Date getDateFromNetwork() throws IOException, ParseException {
         // 协议使用1900年
@@ -51,5 +51,9 @@ public class Time {
         String dateTime = pieces[1] + " " + pieces[2] + " UTC";
         DateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss z");
         return format.parse(dateTime);
+    }
+
+    public static void main(String[] args) throws IOException, ParseException {
+        System.out.println(getDateFromNetwork());
     }
 }
